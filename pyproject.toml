@@ -1,0 +1,51 @@
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "edu-data-pipelines"
+version = "0.1.0"
+description = "Pipelines for universities & professions (LLM + web) – 2025 ready"
+authors = ["You <you@example.com>"]
+readme = "README.md"
+license = "MIT"
+
+# This is the key line: turn off packaging; use Poetry only for dependency management
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+pydantic = ">=2.7,<3"
+aiohttp = ">=3.10,<4"
+python-dotenv = ">=1.0,<2"
+tqdm = ">=4.66,<5"
+openai = ">=1.48,<2"
+# keep if you still import it anywhere; otherwise remove
+tenacity = ">=9.0,<10"
+
+# Optional but useful in LLM/web contexts
+httpx = ">=0.27,<0.28"
+typing-extensions = ">=4.11,<5"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=24.3,<25"
+ruff = ">=0.5,<1"
+mypy = ">=1.10,<2"
+pytest = ">=8.2,<9"
+pytest-asyncio = ">=0.23,<1"
+pytest-cov = ">=5,<6"
+types-requests = "*"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+lint.select = ["E","F","I","UP","B","SIM"]
+exclude = ["out",".venv"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
