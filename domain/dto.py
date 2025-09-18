@@ -1,15 +1,16 @@
 from pydantic import BaseModel, Field, field_validator
-from typing import List, Optional
-from .enums import PROFESSION_CATEGORY, POPULARITY
+
+from .enums import POPULARITY, PROFESSION_CATEGORY
+
 
 class UploadProfessionDto(BaseModel):
     name: str = Field(min_length=1)
     category: PROFESSION_CATEGORY
-    description: Optional[str] = None
-    startSalary: Optional[float] = Field(default=None, ge=0)
-    endSalary: Optional[float] = Field(default=None, ge=0)
-    popularity: Optional[POPULARITY] = None
-    skills: List[str] = Field(default_factory=list)
+    description: str | None = None
+    startSalary: float | None = Field(default=None, ge=0)
+    endSalary: float | None = Field(default=None, ge=0)
+    popularity: POPULARITY | None = None
+    skills: list[str] = Field(default_factory=list)
 
     @field_validator("skills", mode="before")
     @classmethod

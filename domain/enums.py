@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class PROFESSION_CATEGORY(str, Enum):
     TECHNOLOGY = "TECHNOLOGY"
     MEDICINE = "MEDICINE"
@@ -13,6 +14,7 @@ class PROFESSION_CATEGORY(str, Enum):
     SOCIAL_SCIENCES = "SOCIAL_SCIENCES"
     GOVERNMENT = "GOVERNMENT"
     AGRICULTURE = "AGRICULTURE"
+
 
 class POPULARITY(str, Enum):
     LOW = "LOW"
